@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject MyShot_0;//球を打つ
+    Animator animator;
+    [SerializeField] float speed;
     void Start()
     {
         
@@ -15,39 +17,23 @@ public class Player_Controller : MonoBehaviour
         Destroy(Enemy_Prefab.gameObject);
     }
 
-
-    // Update is called once per frame
     void Update()
     {
-        // 移動
-        // 現在地　＋＝　移動方向　ｘ　移動量　ｘ　１フレームを処理する時間
-        // 現在地　transform.position
-        // 移動方向　Vector3 の変数を用意
-        // 移動量　　float の変数を用意
-        // １フレームを処理する時間(1/60) Time.deltaTime
-
- 
-
-        Vector3 dir = Vector3.zero; // 移動方向を保存する変数
-        float speed = 10;            // 移動量を保存する変数
-
- 
-
-        // カーソルキーの情報を移動方向に反映
-        dir.x = Input.GetAxisRaw("Horizontal");
-        dir.y = Input.GetAxisRaw("Vertical");
-
- 
-
- 
-
- 
-
-        // speed m/s の速度でオブジェクトを移動させる
-        transform.position += dir.normalized * speed * Time.deltaTime;
-
- 
-
-
-    }
+        if (Input.GetAxis("Horizontal") == 1)
+        {
+            this.animator.SetTrigger("Player_Up_Animation");
+        }
+        else if(Input.GetAxis("Horizontal") == 0)
+        {
+            this.animator.SetTrigger("Player_down_Animation");
+        }
+        float moveX = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+        float moveY = Input.GetAxis("Vertical") * Time.deltaTime * speed;
+        
+         transform.position = new Vector2(
+             //エリア指定して移動する
+             Mathf.Clamp( transform.position.x + moveX, -8.2f, 8.2f ),
+             Mathf.Clamp( transform.position.y + moveY, -4.5f, 4.5f )
+             );    
+    } 
 }
