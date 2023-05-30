@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player_Controller : MonoBehaviour
 {
     public GameObject MyShot_0;//‹…‚ð‘Å‚Â
-    Animator animator;
     [SerializeField] float speed;
     void Start()
     {
@@ -19,14 +18,6 @@ public class Player_Controller : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetAxis("Horizontal") == 1)
-        {
-            this.animator.SetTrigger("Player_Up_Animation");
-        }
-        else if(Input.GetAxis("Horizontal") == 0)
-        {
-            this.animator.SetTrigger("Player_down_Animation");
-        }
         float moveX = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
         float moveY = Input.GetAxis("Vertical") * Time.deltaTime * speed;
         
