@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class GameDirector : MonoBehaviour
 {
     GameObject TmGauge;
+    float time = 100.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,6 @@ public class GameDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        this.TmGauge.GetComponent<Image>().fillAmount -= 0.00011f;
     }
 }

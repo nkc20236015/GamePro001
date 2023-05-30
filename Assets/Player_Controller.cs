@@ -14,6 +14,8 @@ public class Player_Controller : MonoBehaviour
     void OnTriggerEnter2D( Collider2D Enemy_Prefab)
     {
         Destroy(Enemy_Prefab.gameObject);
+        GameObject director =GameObject.Find("GameDirector");
+        director.GetComponent<GameDirector>().DecreaseTm();
     }
 
     void Update()

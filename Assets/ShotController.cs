@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShotController : MonoBehaviour
 {
-
+    [SerializeField] float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +24,6 @@ public class ShotController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
+       
+    } 
 }
