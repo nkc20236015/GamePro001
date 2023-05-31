@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
 {
-    public GameObject MyShot_0;//球を打つ
+    Animator anim;
+    //public GameObject MyShot_0;//球を打つ
     [SerializeField] float speed;
     void Start()
     {
-        
+        anim=GetComponent<Animator>();
     }
 
     void OnTriggerEnter2D( Collider2D Enemy_Prefab)
@@ -19,14 +20,14 @@ public class Player_Controller : MonoBehaviour
     }
 
     void Update()
-    {
-        float moveX = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-        float moveY = Input.GetAxis("Vertical") * Time.deltaTime * speed;
-        
-         transform.position = new Vector2(
-             //エリア指定して移動する
-             Mathf.Clamp( transform.position.x + moveX, -8.2f, 8.2f ),
-             Mathf.Clamp( transform.position.y + moveY, -4.5f, 4.5f )
-             );    
+    {   
+        float x = 0 , y = 0;
+        x = Input.GetAxis("Horizontal") * Time.deltaTime * speed ;
+        y = Input.GetAxis("Vertical") * Time.deltaTime * speed ;
+        transform.position = new Vector2(
+            //エリア指定して移動する
+            Mathf.Clamp(transform.position.x + x, -8.2f, 8.2f),
+            Mathf.Clamp(transform.position.y + y, -4.5f, 4.5f)
+            );
     } 
 }
