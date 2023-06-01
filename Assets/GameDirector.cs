@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameDirector : MonoBehaviour
 {
     public bool roop;
-    public float countTime = 5.0f;
+    public float countTime = 100.0f;
     GameObject TmGauge;
-    float time = 100.0f;
+    //float time = 100.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,11 @@ public class GameDirector : MonoBehaviour
         if (roop) 
         {
             this.TmGauge.GetComponent<Image>().fillAmount -= 1.0f / countTime * Time.deltaTime;
+        }
+
+        if(this.TmGauge.GetComponent<Image>().fillAmount <= 0.0f)
+        {
+            SceneManager.LoadScene("Scene");
         }
     }
 }

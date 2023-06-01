@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Player_Controller : MonoBehaviour
 {
     Animator anim;
@@ -9,14 +9,20 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] float speed;
     void Start()
     {
-        anim=GetComponent<Animator>();
+        anim = GetComponent<Animator>();
+
     }
 
-    void OnTriggerEnter2D( Collider2D Enemy_Prefab)
+    void OnTriggerEnter2D( Collider2D other)
     {
-        Destroy(Enemy_Prefab.gameObject);
-        GameObject director =GameObject.Find("GameDirector");
-        director.GetComponent<GameDirector>().DecreaseTm();
+        if(other.gameObject.tag == "enemy")
+        {
+            Destroy(gameObject);
+            GameObject director =GameObject.Find("GameDirector");
+            director.GetComponent<GameDirector>().DecreaseTm();
+
+            Debug.Log("‚ ‚½‚Á‚½");
+        }
     }
 
     void Update()
