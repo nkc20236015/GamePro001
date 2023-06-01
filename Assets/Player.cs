@@ -17,19 +17,19 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //¶‰EƒL[‚Ì“ü—Íî•ñ‚ğæ“¾
-        float y = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
 
         if(y == 0)
         {
-            anim.Play("Player");
+            anim.Play("PlayerAnicon");
         }
         else if (y == 1)
         {
-            anim.Play("PlayerR");
+            anim.Play("PlayerL");
         }
         else if (y == -1)
         {
-            anim.Play("PlayerL");
+            anim.Play("PlayerR");
         }
     }
 }
