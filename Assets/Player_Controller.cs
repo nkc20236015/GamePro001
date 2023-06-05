@@ -13,15 +13,13 @@ public class Player_Controller : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D( Collider2D other)
+    void OnTriggerEnter2D( Collider2D Enemy_Prefab)
     {
-        if(other.gameObject.tag == "enemy")
+        Destroy(Enemy_Prefab.gameObject);
+        if(Enemy_Prefab.gameObject)
         {
-            Destroy(gameObject);
             GameObject director =GameObject.Find("GameDirector");
             director.GetComponent<GameDirector>().DecreaseTm();
-
-            Debug.Log("‚ ‚½‚Á‚½");
         }
     }
 
